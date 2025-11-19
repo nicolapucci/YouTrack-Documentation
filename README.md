@@ -159,7 +159,7 @@ Be careful to some warnings:
 - you can add custom endpoints
 
 
-### Fields and Query Syntax
+### <a id='fieldsandquerysyntax'></a>Fields and Query Syntax
 
 in YouTrack REST Api, when you send a request to retrieve a resource, by default the server sends back only the database ID and the `$type` of the resource entity.
 To receive attributes in response from the server you must explicitly specify the `fields` parameter.
