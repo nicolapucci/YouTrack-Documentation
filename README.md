@@ -17,7 +17,13 @@ A work made by interns Adriano Rueda & Nicola Pucci from ITS Prodigi to bring va
     1.9 [Query Completion](#query_completion)   
     1.10 [Visual Indicators](#visual_indicators)
   
-2. [Data Extrapolation](#data_extrapolation)  
+2. [Data Extrapolation](#data_extrapolation)
+   2.1 [Fields and Query Syntax](#fieldsandquerysyntax)
+   2.2 [Pagination](#pagination)
+   2.3 [Entity Attributes](#entityattributes)
+       2.3.1[User](#user)
+       2.3.2[Project](#project)
+       2.3.3[Issue](#issue)
 
 ## <a id='advanced_search'></a> 1. Advanced Search ##
 
@@ -155,7 +161,7 @@ Be careful to some warnings:
 
 ### Fields and Query Syntax
 
-in YouTrack REST Api, when you sent a request to a resource, by default the servers sends back only the database ID and the `$type` of the resource entity.
+in YouTrack REST Api, when you send a request to retrieve a resource, by default the server sends back only the database ID and the `$type` of the resource entity.
 To receive attributes in response from the server you must explicitly specify the `fields` parameter.
 
 
@@ -279,7 +285,14 @@ If we want to take all the attachments from the issues of the Project MioProject
 This will return a list of issues, each issue will have id and a list of attachments and each attachment will have his url
 
 
-
+### Pagination
+The server by default retorn max 50 entries.
+To work with pagination use `$top` and `$skip`
+**example**:
+```
+{base_url}/api/issues/?fields=id,summary&$top=40&$skip=80
+```
+the example above will skip the first 80 results and return results between 81 and 120 (if they exist)
 
 
 
