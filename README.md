@@ -688,7 +688,7 @@ For example: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbybl
  
  - `isUpdateable` Boolean
  
- - `instances` Arrat of [ProjectCustomFields](#projectcustomfields)
+ - `instances` Arrat of [ProjectCustomFields](#projectcustomfield)
  
 
 ### CustomFieldDefault
