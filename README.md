@@ -296,7 +296,7 @@ the example above will skip the first 80 results and return results between 81 a
 
 
 
-## Entity Attributes
+## <a id='entityattributes'></a>Entity Attributes
 
 ### User 
 *[see official User documentation](https://www.jetbrains.com/help/youtrack/devportal/api-entity-User.html#x7x140_6)*
