@@ -5,25 +5,25 @@
 A work made by interns Adriano Rueda & Nicola Pucci from ITS Prodigi to bring value to the team.  
 
 ## Index #
-1.  [Advanced Search](#advanced_search)  
-    1.1 [Definition](#definition)  
-    1.2 [How to activate it](#how_to_activate_it)  
-    1.3 [Syntax](#syntax)  
-    1.4 [Search Suggestions](#search_suggestions)  
-    1.5 [Wildcards in Attribute-based Search](#wildcards)  
-    1.6 [Single Value Search](#single_value_search)  
-    1.7 [Searching for a Range of values](#searching_for_a_range_of_values)  
-    1.8 [Searching in Attributes that Store Text](#searching_in_attributes_that_store_text)  
-    1.9 [Query Completion](#query_completion)   
-    1.10 [Visual Indicators](#visual_indicators)
+- [Advanced Search](#advanced_search)  
+ - [Definition](#definition)  
+ - [How to activate it](#how_to_activate_it)  
+ - [Syntax](#syntax)  
+ - [Search Suggestions](#search_suggestions)  
+ - [Wildcards in Attribute-based Search](#wildcards)  
+ - [Single Value Search](#single_value_search)  
+ - [Searching for a Range of values](#searching_for_a_range_of_values)  
+ - [Searching in Attributes that Store Text](#searching_in_attributes_that_store_text)  
+ - [Query Completion](#query_completion)   
+ - [Visual Indicators](#visual_indicators)
   
-2. [Data Extrapolation](#data_extrapolation)  
-   2.1 [Fields and Query Syntax](#fieldsandquerysyntax)  
-   2.2 [Pagination](#pagination)  
-   2.3 [Entity Attributes](#entityattributes)   
-       2.3.1[User](#user)  
-       2.3.2[Project](#project)  
-       2.3.3[Issue](#issue)  
+- [Data Extrapolation](#data_extrapolation)  
+ - [Fields and Query Syntax](#fieldsandquerysyntax)  
+ - [Pagination](#pagination)  
+ - [Entity Attributes](#entityattributes)   
+  - [User](#user)  
+  - [Project](#project)  
+  - [Issue](#issue)  
 
 ## <a id='advanced_search'></a> 1. Advanced Search ##
 
