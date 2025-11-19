@@ -21,9 +21,9 @@ A work made by interns Adriano Rueda & Nicola Pucci from ITS Prodigi to bring va
   - [Fields and Query Syntax](#fieldsandquerysyntax)  
   - [Pagination](#pagination)  
   - [Entity Attributes](#entityattributes)   
-   - [User](#user)  
-   - [Project](#project)  
-   - [Issue](#issue)  
+     - [User](#user)  
+     - [Project](#project)  
+     - [Issue](#issue)  
 
 ## <a id='advanced_search'></a> 1. Advanced Search ##
 
