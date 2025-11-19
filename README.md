@@ -289,29 +289,29 @@ This will return a list of issues, each issue will have id and a list of attachm
 *[see official User documentation](https://www.jetbrains.com/help/youtrack/devportal/api-entity-User.html#x7x140_6)*
 - `id` String
 
-- `login` String
+- `login` String `not needed`
 
 - `fullName` String
 
-- `email` String `can be null`
+- `email` String `can be null` `not needed`
 
-- `ringId` String You can use this ID for operations in Hub and for matching users between YouTrack and Hub. `can be null`
+- `ringId` String You can use this ID for operations in Hub and for matching users between YouTrack and Hub. `can be null` `not needed`
 
-- `guest` Boolean
+- `guest` Boolean `not needed`
 
-- `online` Boolean
+- `online` Boolean `not needed`
 
-- `banned` Boolean
+- `banned` Boolean `not needed`
 
 - `tags` Array of [Tags](#tags)
 
 - `savedQueries` Array of [savedQueries](#savedqueries) 
 
-- `avatarUrl` String 
+- `avatarUrl` String  `not needed`
 
-- `profiles` [UserProfiles](#userprofiles)
+- `profiles` [UserProfiles](#userprofiles) `not needed`
 
-### UserProfiles
+### UserProfiles `not needed`
 *[see official UserProfiles documentation](https://www.jetbrains.com/help/youtrack/devportal/api-entity-UserProfiles.html#eepffu_2)*
 
 - `id` String
