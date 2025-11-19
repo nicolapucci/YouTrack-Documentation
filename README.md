@@ -20,7 +20,7 @@ A work made by interns Adriano Rueda & Nicola Pucci from ITS Prodigi to bring va
 2. [Data Extrapolation](#data_extrapolation)  
    2.1 [Fields and Query Syntax](#fieldsandquerysyntax)  
    2.2 [Pagination](#pagination)  
-   2.3 [Entity Attributes](#entityattributes)  
+   2.3 [Entity Attributes](#entityattributes)   
        2.3.1[User](#user)  
        2.3.2[Project](#project)  
        2.3.3[Issue](#issue)  
