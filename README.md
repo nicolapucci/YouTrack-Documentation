@@ -210,6 +210,7 @@ If you want to see the custom fields of the issues you have to include `customFi
 ***You can only use queries in `GET` requests that work with collections of issues or tags***  
 
 `query` allows you to filter by the value of the attribute.  
+The syntax for the queries is almost the same as [Advanced Search](#advanced_search).  
 Here's an example where we want to see the issues of the project `Sample Project`.
 ```
 https://example.youtrack.cloud/api/issues?fields=id,summary,project(name)&query=project:+%7BSample+Project%7D
