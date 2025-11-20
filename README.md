@@ -293,7 +293,7 @@ To work with pagination use `$top` and `$skip`
 ```
 the example above will skip the first 80 results and return results between 81 and 120 (if they exist)
 
-### <a id='custom_endpoints></a> Custom Endpoints
+### <a id='custom_endpoints'></a> Custom Endpoints
 In YouTrack you can add custom endpoints using HTTP handlers in your app.  
 Check [app quick start guide](https://www.jetbrains.com/help/youtrack/devportal/apps-quick-start-guide.html) for more.  
 
