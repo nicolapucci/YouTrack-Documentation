@@ -152,11 +152,9 @@ Be careful to some warnings:
 
 - for POST and PUT use **Content-Type** `application/json` 
 
-- YouTrack supports `OAuth2.0` but prefers the usage of a [permanent token](https://www.jetbrains.com/help/youtrack/devportal/authentication-with-permanent-token.html)
+- YouTrack supports `OAuth2.0` but prefers the usage of a [permanent token](https://www.jetbrains.com/help/youtrack/devportal/authentication-with-permanent-token.
 
-- eats and returns json data
-
-- you can add custom endpoints
+- You can add [custom endpoints](#custom_endpoints)
 
 
 ### <a id='fieldsandquerysyntax'></a>Fields and Query Syntax
@@ -295,6 +293,9 @@ To work with pagination use `$top` and `$skip`
 ```
 the example above will skip the first 80 results and return results between 81 and 120 (if they exist)
 
+### <a id='custom_endpoints></a> Custom Endpoints
+In YouTrack you can add custom endpoints using HTTP handlers in your app.  
+Check [app quick start guide](https://www.jetbrains.com/help/youtrack/devportal/apps-quick-start-guide.html) for more.  
 
 
 ## <a id='entityattributes'></a>Entity Attributes
