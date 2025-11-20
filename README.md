@@ -152,7 +152,7 @@ Be careful to some warnings:
 
 - for POST and PUT use **Content-Type** `application/json` 
 
-- YouTrack supports `OAuth2.0` but prefers the usage of a [permanent token](https://www.jetbrains.com/help/youtrack/devportal/authentication-with-permanent-token.
+- YouTrack supports `OAuth2.0` but prefers the usage of a [permanent token](https://www.jetbrains.com/help/youtrack/devportal/authentication-with-permanent-token).
 
 - You can add [custom endpoints](#custom_endpoints)
 
