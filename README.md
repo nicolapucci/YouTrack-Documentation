@@ -33,7 +33,6 @@ A summary of the **YouTrack**'s official documentation.
         - [User](#user)
         - [Project](#project)
         - [Issue](#issue)
-- [Our Final Thoughts](#finalthoughts)
 
 ## <a id='advanced_search'></a> 1. Advanced Search ##
 
@@ -312,7 +311,7 @@ the example above will skip the first 80 results and return results between 81 a
 
 ---
 
-### <a id='custom_endpoints'></a> 2.9 Apps
+### <a id='apps'></a> 2.9 Apps
 Check [app quick start guide](https://www.jetbrains.com/help/youtrack/devportal/apps-quick-start-guide.html) for more.  
 
 `Apps` in Youtrack allow you to customize your youtrack.
@@ -342,8 +341,63 @@ npm run upload -- --host <Your_Url> --token <You_Token>
 ```
 If you rather add it directly on YouTrack, go to `app`, in the top-right corner there will be an `add app` button, press it then press `Upload .zip`
 
+#### <a id='modules'></a> Rules
+In Youtrack you can defuine `rules` to execute,validate and other things following certain patterns and conditions.
+Rules are applied to a project.
+
+They all have the same/similar attributes:
+
+- the `guard` allows you to specify the conditions of the rule.
+- `requirement` allows to specify the requirements needed for the rule.
+- `action` what the rule is supposed to do.
+
+the rules have 4 types of 'trigger':
+- `on-Change` will trigger every time a field of an issue is updated. (Only for `Issues` and `Articles`)
+- `on-Schedule` will trigger regularly depending of the settings. (can be every 5 minutes or every friday at 19:30)
+- `stateMachine` regulates the transition from one value to another for a custom field (Only for enumerated custom fields)
+- `action` can be applied as commands or directly from the *Show more* menu of an entity (Only for `Issues`,`Articles`,`Issue comments`,`Article comments`,`Issue attachments`,`Article attachments`)
+
+the structure for a rule is the following:
+```js
+const entities = require('@jetbrains/youtrack-scripting-api/entities');
+const workflow = require('@jetbrains/youtrack-scripting-api/workflow');
+
+exports.rule = entities.Issue.onChange({
+  title: 'title of the rule',
+  guard: (ctx) => {//this will define if the action should be played or not, it returns a boolean
+    return !ctx.issue.fields.Assignee && ctx.issue.fields.Subsystem;
+  },
+  action: (ctx) => {//what to do if the conditions are met
+    const issue = ctx.issue;
+    const fs = issue.fields;
+    if ((issue.isReported && (fs.isChanged(ctx.Subsystem) || issue.isChanged('project'))) || issue.becomesReported) {
+      if (fs.Subsystem.owner) {
+        if (ctx.Assignee.values.has(fs.Subsystem.owner))
+          fs.Assignee = fs.Subsystem.owner;
+        else
+          workflow.message(
+              "{0} is set as the owner of the {1} subsystem but isn't included in the list of assignees for issues in this project. " +
+              "The workflow that automatically assigns issues to the subsystem owner cannot apply this change.",
+              fs.Subsystem.owner.fullName, fs.Subsystem.name);
+      }
+    }
+  },
+  requirements: {//requirements needed for the action
+    Assignee: {
+      type: entities.User.fieldType
+    },
+    Subsystem: {
+      type: entities.OwnedField.fieldType
+    }
+  }
+});
+```
+
+
+
 #### <a id='http-handler'></a>HTTP Handlers
 
+An HTTP Handler is a type of [custom modules](https://www.jetbrains.com/help/youtrack/server/custom-scripts.html)
 
 Your HTTP Handler can access data via YouTrack WebApi or the internal YouTrack Apis.
 
@@ -1003,32 +1057,3 @@ has like attributes:
 - `owner` [User](#user). Can be null
 
 - `name` String
-
-
-## <a id='finalthoughts'></a> 💡 Final Thoughts
-A summary of the approach for data gathering and update:
-
-### Initial Idea (Straight-forward API):  
-Use the Web API for each entity to gather all data.  
-This requires specifying every desired field, which can lead to long lists, but it allows gathering all needed data.
-
-### Second Idea (HTTP Handlers for Pre-elaboration):  
-Use HTTP Handlers to pre-elaborate the data to make it easier to 'digest'.
-
-*Issue*:  
-The scripting environment has limited memory and execution time (around 30-60 sec, 2000 issues limit).  
-The Workflow API lacks a pagination option, meaning some entities might be excluded if the count exceeds the maximum returned.
-
-### Final Thought (Hybrid Method):  
-Use a combination of all methods:
-
-- Initial Data Gathering: Use the first idea (Web API) with pagination.
-
-- Tracking Updates: Use on-Schedule or on-Change rules to track new or modified issues.
-
-- *Optional* Sending Updates: Use Web Api to send directly the modified issue's data to our backend, if backend responds with 201 remove issue's id from the tracked issue list.
-
-- Returning Updates: Use an HTTP Handler to return the issues tracked by the rules, or let the rule send the data of the new/modified issue directly to your server.
-
-**This approach is initially "expensive" but allows keeping the data updated.**  
-*A pagination option can be implemented in the Returning Updated phase*
